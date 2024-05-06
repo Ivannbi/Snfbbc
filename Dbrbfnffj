@@ -1,0 +1,150 @@
+using System;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Конвертер_валют_крут_фрут
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            {
+                double rateCNYtoRUB = 12.65;
+                double rateRUBtoCNY = 0.079;
+
+                double rateKZTtoRUB = 0.206;
+                double rateRUBtoKZT = 4.840;
+
+                double rateKZTtoCNY = 0.016;
+                double rateCNYtoKZT = 61.29;
+
+                double compareSum = 0;
+                string changeFromStr, changeToStr;
+                string cycleCondition = "";
+
+                Console.WriteLine("Конвертер валют\n");
+                Console.Write("Введите количество у Вас рублей: ");
+                double rubN = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Введите количество у Вас юаней: ");
+                double cnyN = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Введите количество у Вас тенге: ");
+                double kztN = Convert.ToDouble(Console.ReadLine());
+
+                int exit = exit;
+                int CycleCondition = 3; 
+                while (cycleCondition != "exit")
+                {
+                    Console.Clear();
+
+                    Console.SetCursorPosition(13, 0);
+                    Console.WriteLine("Текущий курс валют:\n");
+                    Console.WriteLine($"Продать CNY: {rateCNYtoRUB} RUB, "
+                    + $"Купить CNY: {rateRUBtoCNY} RUB\n"
+                    + $"Продать KZT: {rateKZTtoCNY} RUB\n"
+                    + $"Купить KZT: {rateRUBtoKZT} RUB\n ");
+
+
+
+                    Console.SetCursorPosition(13, 4);
+                    Console.WriteLine($"Обменять EUR/USD: {rateKZTtoRUB}\n ");
+                    Console.WriteLine($"У вас {rubN} рублей, {cnyN} юаней, {kztN} евро\n");
+
+                    Console.Write("Какую валюту хотите поменять?\n"
+                    + "1-рубли, 2-юани, 3-тенге");
+                    changeFromStr = Console.ReadLine();
+                    
+                    int ChangeFromStraight = 1;
+                    int CompareSum = 2;
+                    int ChangeToStraight
+                    if (changeFromStraight == "1")
+                        compareSum = rubN;
+                    else if (changeFromStraight == "2")
+                        compareSum = cnyN;
+                    else if (changeFromStraight == "3")
+                        compareSum = kztN;
+                    else
+                        continue;
+
+                    Console.WriteLine("Введите сумму обмена: ");
+                    double changeSum = Convert.ToDouble(Console.ReadLine());
+
+                    if (changeSum > compareSum || changeSum == 0)
+                        continue;
+
+                    Console.Write("Какую валюту хотите получить?\n" +
+                    "1-рубли. 2-юани. 3-тенге");
+                    changeToStraight = Console.ReadLine();
+                    if (changeToStraight == "1")
+                    {
+                        if (changeFromStraight == "2")
+                        {
+                            rubN += changeSum = rateCNYtoRUB;
+                            cnyN -= changeSum;
+                        }
+                        else if (changeFromStraight == "3")
+                        {
+                            rubN += changeSum * rateKZTtoRUB;
+                            kztN -= changeSum;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    else if (changeToStraight == "2")
+                    {
+                        if (changeFromStraight == "1")
+                        {
+                            cnyN += changeSum / rateRUBtoCNY;
+                            rubN -= changeSum;
+                        }
+                        else if (changeFromStraight == "3")
+                        {
+                            cnyN += changeSum * rateKZTtoCNY;
+                            kztN -= changeSum;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    else if (changeToStraight == "3")
+                    {
+                        if (changeFromStraight == "1")
+                        {
+                            cnyN += changeSum / rateRUBtoKZT;
+                            rubN -= changeSum;
+                        }
+                        else if (changeFromStraight == "2")
+                        {
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    Console.WriteLine($"обмен произведен\n" +
+                    $"У Вас {rubN} рублей, {cnyN} юаней, {kztN} тенге\n");
+
+                    Console.WriteLine("Для продолжения нажмите Enter.\n" +
+                    "Для выхода из программы введите exit и нажмите Enter");
+                    cycleCondition = Console.ReadLine();
+                }
+
+
+
+
+
+
+
+            }
+        }
+    }
+}
+Comment
+ 
